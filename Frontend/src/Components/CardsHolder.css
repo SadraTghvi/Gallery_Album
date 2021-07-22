@@ -1,0 +1,17 @@
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardsHolder{
+    display: grid;
+    /* place-items: center; */
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20vh;
+    grid-row-gap: 5vh;
+}
+img{
+    object-fit: cover;
+    max-height: 20vh;
+}
