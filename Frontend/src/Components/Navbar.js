@@ -55,7 +55,7 @@ function Navbar() {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Add A Picture
+                Sign Up
               </Link>
             </li>
 
@@ -65,7 +65,7 @@ function Navbar() {
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
-                Sign Up
+                About Us
               </Link>
             </li>
           </ul>
