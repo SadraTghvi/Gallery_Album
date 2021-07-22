@@ -18,7 +18,7 @@ function HeroSection() {
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'> 
                         Add Your Own Image
-                        </Button>
+                </Button>
                 
             </div>
             
