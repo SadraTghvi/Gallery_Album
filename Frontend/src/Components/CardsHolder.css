@@ -1,7 +1,21 @@
 .parent{
+    background-color: snow;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+h1{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin: 0;
+    background-color: snow;
+    text-align: center;
+    transition: all 500ms linear;
+}
+
+h1:hover{
+    color: red;
 }
 
 .CardsHolder{
