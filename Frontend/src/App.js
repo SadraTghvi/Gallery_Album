@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Components/Pages/Home';
 import Navbar from './Components/Navbar';
-import "./App.css"
+import Footer from './Components/Footer';
+import "./App.css";
 
 
 
@@ -17,6 +18,7 @@ function App() {
                         <Home text={"you are in the wrong path"} />
                 </Route>
             </Switch>
+            <Footer />
         </Router>
     )
 }

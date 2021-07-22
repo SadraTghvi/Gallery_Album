@@ -1,18 +1,25 @@
-import React from 'react'
-import "./ImgCard.css"
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ImgCard(props) {
-    return (
-        <>
-            <div className="card myCard">
-                <img src={props.src} class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">See This Picture</a>
-                </div>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <li className='cards__item'>
+        <Link className='cards__item__link' to={props.path}>
+          <figure className='cards__item__pic-wrap' data-category={props.label}>
+            <img
+              className='cards__item__img'
+              alt='Travel Image'
+              src={props.src}
+            />
+          </figure>
+          <div className='cards__item__info'>
+            <h5 className='cards__item__text'>{props.text}</h5>
+          </div>
+        </Link>
+      </li>
+    </>
+  );
 }
 
-export default ImgCard
+export default ImgCard;
