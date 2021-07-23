@@ -14,9 +14,7 @@ function App() {
             <Navbar />
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="*">
-                        <Home text={"you are in the wrong path"} />
-                </Route>
+                
             </Switch>
             <Footer />
         </Router>
