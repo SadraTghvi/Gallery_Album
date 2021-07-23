@@ -23,6 +23,7 @@
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
   },
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
     "axios": "^0.21.1",
