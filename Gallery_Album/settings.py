@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "Frontend",
+
+    "Albums",
+
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -127,3 +131,8 @@ STATIC_ROOT = BASE_DIR / 'Frontend/static'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = BASE_DIR / 'Frontend/static/images'
