@@ -15,12 +15,7 @@ function Footer() {
         </p>
         <div className='input-areas'>
           <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Your Email'
-            />
+            
             <Button link="/sign-up" buttonStyle='btn--outline'>Subscribe</Button>
           </form>
         </div>
