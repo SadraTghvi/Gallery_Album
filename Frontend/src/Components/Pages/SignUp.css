@@ -1,0 +1,12 @@
+.myContainer{
+    min-height: 50vh;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-btn{
+    min-width: 300px;
+}
