@@ -7,14 +7,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 20vh;
-    right: 12vh;
+    top: 12vh;
+    right: -1vh;
     min-width: 200px;
-    width: 280px;
+    width: 350px;
     min-height: 80px;
     height: 100px;
     border-radius: 8px;
     background-color: black;
+    transition: right 500ms ease-out;
 }
 
 .red{
@@ -28,11 +29,12 @@ body{
 }
 
 .black{
-    background-color: rgb(0, 0, 0,0);
+    right: -100vh;
 }
 
 .text{
     margin: 15px;
+    margin-right: 50px;
     text-transform: capitalize;
     color: snow;
     text-align: center;
