@@ -2,6 +2,16 @@ import React, { useState, useEffect } from 'react';
 import {FaTypo3,FaTimes,FaBars} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import axios from 'axios';
+
+const csrfToken = document.currentScript.getAttribute('csrfToken') || Cookies.get('csrftoken')
+
+const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
+    },
+};
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -10,6 +20,44 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
+  const [user,setUser] = useState(" ")
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
+  
+  const getInfo = () =>{
+    axios.get("account/")
+    .then(res =>{
+      if(res.data.status === "true"){
+        setUser(res.data.username)
+      }else{
+        setUser("anonymous")
+      }
+    })
+  }
+
+    
+    let link;
+    if (user !== "anonymous") {
+      link = <Link
+                to='/logout'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                {user}
+              </Link>
+    } else {
+      link = <Link
+                to='/signup'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Sign Up
+              </Link>
+    }
+  
+  
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
@@ -17,6 +65,10 @@ function Navbar() {
       setButton(true);
     }
   };
+  
+  useEffect(() => {
+    getInfo()
+  }, [])
 
   useEffect(() => {
     showButton();
@@ -51,13 +103,7 @@ function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link
-                to='/signup'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
+              {link}
             </li>
 
             <li>
