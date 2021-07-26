@@ -161,4 +161,5 @@ yarn-error.log*
 
 package-lock.json
 
-static/
+static/build
+static/images
