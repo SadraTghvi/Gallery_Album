@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {FaTypo3,FaTimes,FaBars} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -29,10 +30,10 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             Gallery Album
-            <i className='fab fa-typo3' />
+            <FaTypo3 />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+            <i className={click ? <FaTimes /> : <FaBars/>} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
