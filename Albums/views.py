@@ -50,11 +50,13 @@ def signUp(request):
         system_login(request,user)
         
         return JsonResponse({
-            "status": "success"
+            "status": "success",
+            "text" : "you have successfully Registered In Our Site",
         })
     except Exception as exept:
         print(exept)
 
         return JsonResponse({
-            "status": "failed"
+            "status": "failed",
+            "text": f"There was an error for making your account {exept}",
         })
