@@ -1,7 +1,10 @@
 import React,{useState,useEffect} from 'react'
+import { Redirect,useHistory } from "react-router-dom";
 import axios from 'axios'
+
 import "./SignUp.css"
 import Info from '../Info'
+
 import Cookies from 'js-cookie'
 
 const config = {
@@ -15,13 +18,18 @@ function SignUp() {
     const [color,setColor] = useState("black")
     const [text,setText] = useState(" ")
     const [userPass,setUserPass] = useState({username:"",password:""})
+    const [needToRedirect,setNeedToRedirect] = useState(false)
+
+    const history = useHistory()
+
+    
 
     var info = <> </>
 
     
 
     const sendForm = () =>{
-        axios.post('http://127.0.0.1:8000/api/signup/',{
+        axios.post('/api/signup/',{
             username:userPass.username,
             password:userPass.password
         },config)
@@ -29,12 +37,18 @@ function SignUp() {
             if (res.data.status === "success"){
                 setColor("green")
                 setText("your account has been successfully registerd")
+                setNeedToRedirect(true)
             }else{  
                 // info = <Info color={"red"} text={res.data.status} />
                 setColor("red")
                 setText("your email has already being registered")
+
             }
         })
+    }
+
+    if (needToRedirect){
+        return <Redirect to="" />
     }
 
     const formHandler = (e) =>{
