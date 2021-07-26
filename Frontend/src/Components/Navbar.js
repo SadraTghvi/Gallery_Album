@@ -16,18 +16,16 @@ const config = {
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-
+  
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-
+  
   const [user,setUser] = useState(" ")
-
-  useEffect(() => {
-    console.log(user)
-  }, [user])
+  
+  
   
   const getInfo = () =>{
-    axios.get("account/")
+    axios.get("manageAccount/")
     .then(res =>{
       if(res.data.status === "true"){
         setUser(res.data.username)
@@ -36,12 +34,15 @@ function Navbar() {
       }
     })
   }
-
-    
+  
+  useEffect(() => {
+    getInfo()
+  }, [])
+  
     let link;
     if (user !== "anonymous") {
       link = <Link
-                to='/logout'
+                to='/account'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -66,9 +67,6 @@ function Navbar() {
     }
   };
   
-  useEffect(() => {
-    getInfo()
-  }, [])
 
   useEffect(() => {
     showButton();

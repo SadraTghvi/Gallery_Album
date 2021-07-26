@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth import login as system_login, logout as system_logout, authenticate
 
+from django.shortcuts import redirect
+
 from django.contrib.auth.models import User
 
 from django.views.decorators.http import require_POST, require_GET
@@ -13,6 +15,7 @@ from rest_framework.response import Response
 from Albums.serializers import *
 
 from Albums.models import *
+
 
 
 def BodyLoader(body):
@@ -65,3 +68,8 @@ def account(request):
             "status":"faile",
             "username": "anonymous",
         })
+
+
+def logOut(request):
+    system_logout(request)
+    return redirect("/")

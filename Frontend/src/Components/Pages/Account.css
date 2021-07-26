@@ -5,6 +5,17 @@
     align-items: center;
 }
 
+
+button{
+    margin: 0 10vh;
+}
+
+.text{
+    color: black;
+    font-weight: bolder;
+}
+    
+
 .text{
     margin-bottom: 15vh;
 }

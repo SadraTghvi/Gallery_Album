@@ -29,7 +29,7 @@ function SignUp() {
     
 
     const sendForm = () =>{
-        axios.post('/account/signup/',{
+        axios.post('manageAccount/signup/',{
             username:userPass.username,
             password:userPass.password
         },config)
@@ -48,7 +48,7 @@ function SignUp() {
     }
 
     if (needToRedirect){
-        return <Redirect to="" />
+        return <Redirect to="/" />
     }
 
     const formHandler = (e) =>{
