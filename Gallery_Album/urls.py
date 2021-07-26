@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path("api/",include("Albums.urls")),
+    path("account/",include("Account.urls")),
     path('<path:resource>', TemplateView.as_view(template_name='index.html')),
 ]

@@ -4,5 +4,4 @@ from Albums import views
 
 urlpatterns = [
     path("", views.getPics ,name="api"),
-    path("signup/", views.signUp, name="signUp"),
 ]
