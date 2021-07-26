@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import "./SignUp.css"
+import Info from '../Info'
 import Cookies from 'js-cookie'
 
 const config = {
@@ -11,12 +12,11 @@ const config = {
     };
 
 function SignUp() {
-
+    const [color,setColor] = useState("black")
+    const [text,setText] = useState(" ")
     const [userPass,setUserPass] = useState({username:"",password:""})
 
-    useEffect(() => {
-        console.log(userPass)    
-    }, [userPass])
+    var info = <> </>
 
     
 
@@ -25,8 +25,16 @@ function SignUp() {
             username:userPass.username,
             password:userPass.password
         },config)
-        
-    
+        .then(res =>{
+            if (res.data.status === "success"){
+                setColor("green")
+                setText("your account has been successfully registerd")
+            }else{  
+                // info = <Info color={"red"} text={res.data.status} />
+                setColor("red")
+                setText("your email has already being registered")
+            }
+        })
     }
 
     const formHandler = (e) =>{
@@ -58,6 +66,8 @@ function SignUp() {
                 <form action="" onSubmit={formHandler}>
                     {formInputs}
                     {btn}
+
+                    <Info color={color} text={text} />
                 </form>
            </div>
         </>
