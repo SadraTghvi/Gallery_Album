@@ -29,7 +29,7 @@ function SignUp() {
     
 
     const sendForm = () =>{
-        axios.post('/api/signup/',{
+        axios.post('/account/signup/',{
             username:userPass.username,
             password:userPass.password
         },config)
