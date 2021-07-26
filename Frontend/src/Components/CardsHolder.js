@@ -7,7 +7,7 @@ function CardsHolder() {
   const [data,setData] = useState([])
 
   const getPics = () =>{
-    axios.get('http://127.0.0.1:8000/api/')
+    axios.get('/api/')
     .then(res => {
       setData(res.data)
     })
