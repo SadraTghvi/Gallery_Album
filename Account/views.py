@@ -52,3 +52,16 @@ def signUp(request):
             "status": "failed",
             "text": f"There was an error for making your account {exept}",
         })
+
+@require_GET
+def account(request):
+    if request.user.is_authenticated:
+        return JsonResponse({
+            "status":"true",
+            "username": request.user.username,
+        })
+    else:
+        return JsonResponse({
+            "status":"faile",
+            "username": "anonymous",
+        })
