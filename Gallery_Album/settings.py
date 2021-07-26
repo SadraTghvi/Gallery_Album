@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     "Albums",
 
+    "Account",
+
     "rest_framework",
 ]
 
