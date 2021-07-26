@@ -1,0 +1,10 @@
+.main{
+    margin: 30vh auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    margin-bottom: 15vh;
+}
