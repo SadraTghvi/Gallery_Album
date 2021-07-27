@@ -10,12 +10,11 @@ button{
     margin: 0 10vh;
 }
 
-.text{
+h1.text{
     color: black;
     font-weight: bolder;
+    margin-bottom: 15vh;
 }
     
 
-.text{
-    margin-bottom: 15vh;
-}
+    

@@ -30,7 +30,7 @@ function CardsHolder() {
 
   return (
     <div className='cards'>
-      <h1>Gallery Album</h1>
+      <h1 id="gallery_album">Gallery Album</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>

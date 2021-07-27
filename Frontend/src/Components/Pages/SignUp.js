@@ -22,6 +22,8 @@ function SignUp() {
 
     const history = useHistory()
 
+   
+
     
 
     var info = <> </>
@@ -39,7 +41,7 @@ function SignUp() {
                 setText("your account has been successfully registerd")
                 setNeedToRedirect(true)
             }else{  
-                // info = <Info color={"red"} text={res.data.status} />
+                info = <Info color={"red"} text={res.data.status} />
                 setColor("red")
                 setText("your email has already being registered")
 
@@ -76,6 +78,7 @@ function SignUp() {
     </div>
     return (
         <>
+            <h1 className="text">Sign Up</h1>
            <div className="container myContainer">
                 <form action="" onSubmit={formHandler}>
                     {formInputs}

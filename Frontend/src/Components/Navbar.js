@@ -40,6 +40,7 @@ function Navbar() {
   }, [])
   
     let link;
+    let link2;
     if (user !== "anonymous") {
       link = <Link
                 to='/account'
@@ -49,13 +50,22 @@ function Navbar() {
                 {user}
               </Link>
     } else {
-      link = <Link
-                to='/signup'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
+      link = 
+                <Link
+                  to='/signup'
+                  className='nav-links'
+                  onClick={closeMobileMenu}
+                >
+                  Sign Up
+                </Link> 
+      link2=   
+            <Link
+                  to='/login'
+                  className='nav-links'
+                  onClick={closeMobileMenu}
+                >
+                  Login
+            </Link>         
     }
   
   
@@ -92,16 +102,15 @@ function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link
-                to='/services'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Gallery
-              </Link>
+                <a className="nav-links" onClick={closeMobileMenu} href="#gallery_album">
+                    Gallery
+                </a>
             </li>
             <li className='nav-item'>
               {link}
+            </li>
+            <li className='nav-item'>
+              {link2}
             </li>
 
             <li>

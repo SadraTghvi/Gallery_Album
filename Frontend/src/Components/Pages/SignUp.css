@@ -10,3 +10,9 @@
 .my-btn{
     min-width: 300px;
 }
+
+h1.text{
+    position: absolute;
+    top: 25vh;
+    left: 46%;
+}
