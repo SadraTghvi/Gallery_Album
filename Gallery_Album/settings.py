@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     "Account",
 
+    "AddImg",
+
     "rest_framework",
 ]
 
