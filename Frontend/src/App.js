@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Account from './Components/Pages/Account';
 import Login from './Components/Pages/Login';
+import AddImg from './Components/Pages/AddImg';
 
 import "./App.css";
 
@@ -20,13 +21,15 @@ function App() {
         <Router>
             <Navbar  />
             <Switch>
-                <Route path="/" exact component={Home}/>
+                <Route path="/"        exact   component={Home}/>
 
 
 
-                <Route path="/account" exact component={Account}/>
-                <Route path="/signup" exact component={SignUp}/> 
-                <Route path="/login" exact component={Login}/> 
+                <Route path="/account" exact   component={Account}/>
+                <Route path="/signup"  exact   component={SignUp}/> 
+                <Route path="/login"   exact   component={Login}/> 
+                
+                <Route path="/addimg"  exact   component={AddImg}/>
 
             </Switch>
             <Footer />
