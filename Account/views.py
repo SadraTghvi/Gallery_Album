@@ -69,7 +69,37 @@ def account(request):
             "username": "anonymous",
         })
 
-
 def logOut(request):
     system_logout(request)
     return redirect("/")
+
+@require_POST   
+def logIn(request):
+    if request.user.is_authenticated:
+        system_logout(request)
+    
+    data = {}
+
+    if request.POST:
+        data = request.POST
+    elif request.body:
+        data = BodyLoader(request.body)
+    
+    username = data.get("username")
+    password = data.get("password")
+
+    user = authenticate(username=username,password=password)
+
+    if user:
+        system_login(request,user)
+
+        return JsonResponse({
+            "status": "success"
+        })
+    else:
+        return JsonResponse({
+            "status": "failed",
+            "text" : "Username And Password Are Incorrect"
+        })
+
+    
