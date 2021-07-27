@@ -22,5 +22,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
     path("api/albums/",include("Albums.urls")),
     path("manageAccount/",include("Account.urls")),
+    path("addImg/",include("AddImg.urls")),
     path('<path:resource>', TemplateView.as_view(template_name='index.html')),
 ]
