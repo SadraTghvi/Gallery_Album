@@ -50,7 +50,7 @@ function CardsHolder() {
           
                       
           </ul>
-          <ul className='cards__items mine'>
+          <ul className='cards__items mine' id="mine">
           
           {data.map((item) =>
             <ImgCard

@@ -74,7 +74,7 @@ def addText(request):
 
         newAlbum = Albums.objects.get(id=albumId)
 
-        newAlbum.title = title
+        newAlbum.Title = title
         newAlbum.discription = discription
 
         newAlbum.save()

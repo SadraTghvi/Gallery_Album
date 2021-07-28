@@ -12,7 +12,6 @@ const config = {
 
 const config2 = {
     headers:{
-        'content-type': 'multipart/form-data',
         'Content-Type': 'application/json',
         'X-CSRFToken': document.currentScript.getAttribute('csrfToken'),
     }
@@ -23,7 +22,7 @@ function AddImg() {
     const [data, setdata] = useState({
         title: "",
         discription: "",
-        "id": null
+        id: null
     })
 
     useEffect(() => {
