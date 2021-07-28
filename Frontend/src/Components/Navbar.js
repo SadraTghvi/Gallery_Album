@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {FaTypo3,FaTimes,FaBars} from "react-icons/fa";
+import {FaTypo3,FaTimes,FaBars} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import axios from 'axios';
@@ -20,17 +20,17 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   
-  const [user,setUser] = useState(" ")
+  const [user,setUser] = useState(' ')
   
   
   
   const getInfo = () =>{
-    axios.get("manageAccount/")
+    axios.get('manageAccount/')
     .then(res =>{
-      if(res.data.status === "true"){
+      if(res.data.status === 'true'){
         setUser(res.data.username)
       }else{
-        setUser("anonymous")
+        setUser('anonymous')
       }
     })
   }
@@ -41,7 +41,7 @@ function Navbar() {
   
     let link;
     let link2;
-    if (user !== "anonymous") {
+    if (user !== 'anonymous') {
       link = <Link
                 to='/account'
                 className='nav-links'
@@ -102,7 +102,7 @@ function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
-                <a className="nav-links" onClick={closeMobileMenu} href="#gallery_album">
+                <a className='nav-links' onClick={closeMobileMenu} href='#gallery_album'>
                     Gallery
                 </a>
             </li>

@@ -5,4 +5,4 @@ from Albums.models import *
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Albums
-        fields = "__all__"
+        fields = '__all__'

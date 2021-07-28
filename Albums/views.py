@@ -16,7 +16,7 @@ from Albums.models import *
 
 
 # Create your views here.
-@api_view(["GET"])
+@api_view(['GET'])
 def getPics(request):
     pics = Albums.objects.all()
     serializer = TaskSerializer(pics,many=True)

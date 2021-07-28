@@ -2,18 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from './Button'
 
-import "./HeroSection.css"
-import "../App.css"
+import './HeroSection.css'
+import '../App.css'
 
 function HeroSection() {
     return (
-        <div className="hero-container">
+        <div className='hero-container'>
             <video src='static/videos/video-1.mp4' autoPlay loop muted />
             <h1>Gallery Album</h1>
             <p>What are you waiting for?</p>
             <div className='hero-btns'>
                 <Button 
-                        link="/addimg"
+                        link='/addimg'
                         className='btns'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'> 

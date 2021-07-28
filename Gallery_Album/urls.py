@@ -1,4 +1,4 @@
-"""Gallery_Album URL Configuration
+'''Gallery_Album URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -12,7 +12,7 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+'''
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import TemplateView
@@ -20,8 +20,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
-    path("api/albums/",include("Albums.urls")),
-    path("manageAccount/",include("Account.urls")),
-    path("addImg/",include("AddImg.urls")),
+    path('api/albums/',include('Albums.urls')),
+    path('manageAccount/',include('Account.urls')),
+    path('addImg/',include('AddImg.urls')),
     path('<path:resource>', TemplateView.as_view(template_name='index.html')),
 ]

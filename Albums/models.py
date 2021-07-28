@@ -7,4 +7,4 @@ class Albums(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.Title or "No Title"
+        return self.Title or 'No Title'

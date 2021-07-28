@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { Link, Redirect, useHistory } from 'react-router-dom';
 
-import "./Account.css"
+import './Account.css'
 
 function Account() {
 
@@ -10,15 +10,15 @@ function Account() {
 
 
     const logOut = () =>{
-        window.location.replace("manageAccount/logout/");
+        window.location.replace('manageAccount/logout/');
     }
 
     var redirect;
     const getInfo = () =>{
-        axios.get("manageAccount/")
+        axios.get('manageAccount/')
         .then(res =>{
             console.log(res)
-        if(res.data.status !== "true"){
+        if(res.data.status !== 'true'){
             redirect = false
         }else{
             redirect = true
@@ -26,7 +26,7 @@ function Account() {
         })
     }
 
-    if(redirect) return <Redirect to="/" />
+    if(redirect) return <Redirect to='/' />
 
     useEffect(() => {
         getInfo()
@@ -36,20 +36,20 @@ function Account() {
 
     return (
         <>
-            <div className="main">
-                <div className="logOut">
-                    <div className="text">You Sure You Wana Logout?</div>
+            <div className='main'>
+                <div className='logOut'>
+                    <div className='text'>You Sure You Wana Logout?</div>
                     
                     <button
-                        className="confirm btn btn-danger"
+                        className='confirm btn btn-danger'
                         onClick={logOut}
                     >
                         Yes, Log Me Out
                     </button>
 
-                    <Link to="/" className='btn-mobile'>
+                    <Link to='/' className='btn-mobile'>
                         <button
-                            className="deny btn btn--outline"
+                            className='deny btn btn--outline'
                             
                         >
                             Cancle

@@ -1,7 +1,7 @@
 import React from 'react'
-import "./Info.css"
+import './Info.css'
 
-const COLOR = ["black","red","green"]
+const COLOR = ['black','red','green']
 
 
 function Info(props) {
@@ -10,14 +10,14 @@ function Info(props) {
     return (
         <>
             <div className={`info_main ${CheckColor} ` }>
-                <div className="text">{props.text}</div>
+                <div className='text'>{props.text}</div>
             </div>
         </>
     )
 }
 
 Info.defaultProps = {
-    text: "",
+    text: '',
 }
 
 export default Info

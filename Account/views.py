@@ -36,8 +36,8 @@ def signUp(request):
     elif request.body:
         data = BodyLoader(request.body)
 
-    username = data.get("username")
-    password = data.get("password")
+    username = data.get('username')
+    password = data.get('password')
     print(username, password)
 
     try:
@@ -45,33 +45,33 @@ def signUp(request):
         system_login(request, user)
 
         return JsonResponse({
-            "status": "success",
-            "text": "you have successfully Registered In Our Site",
+            'status': 'success',
+            'text': 'you have successfully Registered In Our Site',
         })
     except Exception as exept:
         print(exept)
 
         return JsonResponse({
-            "status": "failed",
-            "text": f"There was an error for making your account {exept}",
+            'status': 'failed',
+            'text': f'There was an error for making your account {exept}',
         })
 
 @require_GET
 def account(request):
     if request.user.is_authenticated:
         return JsonResponse({
-            "status":"true",
-            "username": request.user.username,
+            'status':'true',
+            'username': request.user.username,
         })
     else:
         return JsonResponse({
-            "status":"faile",
-            "username": "anonymous",
+            'status':'faile',
+            'username': 'anonymous',
         })
 
 def logOut(request):
     system_logout(request)
-    return redirect("/")
+    return redirect('/')
 
 @require_POST   
 def logIn(request):
@@ -85,8 +85,8 @@ def logIn(request):
     elif request.body:
         data = BodyLoader(request.body)
     
-    username = data.get("username")
-    password = data.get("password")
+    username = data.get('username')
+    password = data.get('password')
 
     user = authenticate(username=username,password=password)
 
@@ -94,12 +94,12 @@ def logIn(request):
         system_login(request,user)
 
         return JsonResponse({
-            "status": "success"
+            'status': 'success'
         })
     else:
         return JsonResponse({
-            "status": "failed",
-            "text" : "Username And Password Are Incorrect"
+            'status': 'failed',
+            'text' : 'Username And Password Are Incorrect'
         })
 
     

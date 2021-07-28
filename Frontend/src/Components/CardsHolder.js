@@ -30,7 +30,7 @@ function CardsHolder() {
 
   return (
     <div className='cards'>
-      <h1 id="gallery_album">Gallery Album</h1>
+      <h1 id='gallery_album'>Gallery Album</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
@@ -55,7 +55,7 @@ function CardsHolder() {
           {data.map((item) =>
             <ImgCard
               key={item.id}
-              src={"static"+item.img}
+              src={'static'+item.img}
               text={item.description}
               label={item.Title}
               path='/services'
