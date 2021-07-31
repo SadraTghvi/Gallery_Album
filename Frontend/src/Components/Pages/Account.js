@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import "./Account.css"
 
 function Account() {
+    const [redirect, setredirect] = useState(false)
 
     let history = useHistory();
 
@@ -13,27 +14,27 @@ function Account() {
         window.location.replace("manageAccount/logout/");
     }
 
-    var redirect;
     const getInfo = () =>{
-        axios.get("manageAccount/")
+        axios.get("/manageAccount/")
         .then(res =>{
             console.log(res)
-        if(res.data.status !== "true"){
-            redirect = false
-        }else{
-            redirect = true
-        }
+            if(res.data.status === "failed"){
+                setredirect(true)
+            } else{
+                setredirect(false)
+            }
         })
     }
 
-    if(redirect) return <Redirect to="/" />
-
+    
     useEffect(() => {
         getInfo()
     }, [])
 
-
-
+    if (redirect){
+        return <Redirect to="/login" />
+    }
+    
     return (
         <>
             <div className="main">
