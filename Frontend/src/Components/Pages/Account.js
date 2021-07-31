@@ -4,7 +4,7 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import "./Account.css"
 
-function Account() {
+function Account(props) {
     const [redirect, setredirect] = useState(false)
 
     let history = useHistory();
@@ -14,24 +14,24 @@ function Account() {
         window.location.replace("manageAccount/logout/");
     }
 
-    const getInfo = () =>{
-        axios.get("/manageAccount/")
-        .then(res =>{
-            console.log(res)
-            if(res.data.status === "failed"){
-                setredirect(true)
-            } else{
-                setredirect(false)
-            }
-        })
-    }
+    // const getInfo = () =>{
+    //     axios.get("/manageAccount/")
+    //     .then(res =>{
+    //         console.log(res)
+    //         if(res.data.status === "failed"){
+    //             setredirect(true)
+    //         } else{
+    //             setredirect(false)
+    //         }
+    //     })
+    // }
 
     
-    useEffect(() => {
-        getInfo()
-    }, [])
+    // useEffect(() => {
+    //     getInfo()
+    // }, [])
 
-    if (redirect){
+    if (props.redirect.redirect){
         return <Redirect to="/login" />
     }
     
