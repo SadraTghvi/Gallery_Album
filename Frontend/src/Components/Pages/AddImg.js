@@ -4,7 +4,7 @@ import "./AddImg.css"
 
 const config = {
     headers:{
-        'content-type': 'multipart/form-data',
+        // 'content-type': 'multipart/form-data',
         'Content-Type': 'application/json',
         'X-CSRFToken': document.currentScript.getAttribute('csrfToken'),
     }
@@ -21,8 +21,7 @@ function AddImg() {
     const [file, setfile] = useState(null)
     const [data, setdata] = useState({
         title: "",
-        discription: "",
-        id: null
+        discription: ""
     })
 
     useEffect(() => {
@@ -40,7 +39,6 @@ function AddImg() {
     const sendImg = () =>{
         fileUpload().then(res =>{
             console.log(res)
-            setdata({...data,id:res.data.albumId})
         })
     }
     
@@ -54,6 +52,8 @@ function AddImg() {
         const url = "addImg/getImg/"
         const formData = new FormData();
         formData.append("file",file)
+        formData.append("title",data.title)
+        formData.append("discription",data.discription)
 
         return post(url,formData,config)
     }
