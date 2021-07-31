@@ -1,6 +1,7 @@
 .addImg{
     display: inline-block;
     margin: 0 auto;
+    margin-left: 40vh;
     transform: translate(30%,40%);
     height: 100vh;
 }
