@@ -65,7 +65,7 @@ def account(request):
         })
     else:
         return JsonResponse({
-            "status":"faile",
+            "status":"failed",
             "username": "anonymous",
         })
 
