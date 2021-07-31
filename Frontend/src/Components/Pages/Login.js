@@ -15,11 +15,11 @@ const config = {
     };
 
 
-function Login() {
+function Login(props) {
     const [color,setColor] = useState("black")
     const [text,setText] = useState(" ")
     const [userPass,setUserPass] = useState({username:"",password:""})
-    const [needToRedirect,setNeedToRedirect] = useState(false)
+    const [redirect, setredirect] = useState(false)
 
     const history = useHistory()
 
@@ -40,17 +40,20 @@ function Login() {
             console.log(res)
             if (res.data.status === "success"){
                 setColor("green")
-                setText("your account has been successfully registerd")
-                setNeedToRedirect(true)
+                setText("You Logged In Successfully")
+                setredirect(true)
             }else{  
                 setColor("red")
                 setText(res.data.text)
-
             }
         })
     }
 
-    if (needToRedirect){
+    if(redirect){
+        return <Redirect to="/" />
+    }
+
+    if (!props.redirect.redirect){
         return <Redirect to="/" />
     }
 
