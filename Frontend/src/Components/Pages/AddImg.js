@@ -1,5 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios, { post } from 'axios'
+import Info from "../Info"
+
 import "./AddImg.css"
 
 const config = {
@@ -19,6 +21,10 @@ const config2 = {
 
 function AddImg() {
     const [file, setfile] = useState(null)
+    const [info, setinfo] = useState({
+        text : "",
+        color : ""
+    })
     const [data, setdata] = useState({
         title: "",
         discription: ""
@@ -28,34 +34,30 @@ function AddImg() {
         console.log(data)
     }, [data])
 
-    const sendText = (e) =>{
+    
+
+    const sendForm = (e) =>{
         e.preventDefault()
-        axios.post("addImg/getText/",data,config2)
-        .then(res =>{
-            console.log(res)
-        })
-    }
-
-    const sendImg = () =>{
-        fileUpload().then(res =>{
-            console.log(res)
-        })
-    }
-    
-    
-
-    const onChange = (e) =>{
-        setfile(e.target.files[0])
-    }
-
-    const fileUpload = () =>{
         const url = "addImg/getImg/"
         const formData = new FormData();
         formData.append("file",file)
         formData.append("title",data.title)
         formData.append("discription",data.discription)
 
-        return post(url,formData,config)
+        axios.post(url,formData,config)
+        .then(res =>{
+            console.log(res)
+            if (res.data.status === "success"){
+                setinfo({text:res.data.text,color:"green"})
+            } else{
+                console.log(res.data.text)
+                setinfo({text:res.data.text,color:"red"})
+            }
+        })
+    }
+
+    const onChange = (e) =>{
+        setfile(e.target.files[0])
     }
 
     useEffect(() => {
@@ -77,8 +79,10 @@ function AddImg() {
                         <input type="text"  onChange={e => setdata({...data,discription:e.target.value})} name="user" className="form-control" placeholder="..." aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                     <input required  type="file" onChange={onChange} />
-                    <button className="btn btn-danger" type="submit" onClick={sendImg}>Upload Img</button>
-                    <button className="btn btn-dark" type="submit" onClick={sendText}>Set Img text</button>
+                    <button className="btn btn-primary" type="submit" onClick={sendForm}>Submit</button>
+            </div>
+            <div className="info">
+                <Info text={info.text} color={info.color} />
             </div>
         </>
     )

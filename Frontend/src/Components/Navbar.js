@@ -25,7 +25,7 @@ function Navbar() {
   
   
   const getInfo = () =>{
-    axios.get("manageAccount/")
+    axios.get("/manageAccount/")
     .then(res =>{
       if(res.data.status === "true"){
         setUser(res.data.username)
