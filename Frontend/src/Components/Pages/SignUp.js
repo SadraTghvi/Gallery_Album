@@ -14,11 +14,10 @@ const config = {
             },
     };
 
-function SignUp() {
+function SignUp(props) {
     const [color,setColor] = useState("black")
     const [text,setText] = useState(" ")
     const [userPass,setUserPass] = useState({username:"",password:""})
-    const [needToRedirect,setNeedToRedirect] = useState(false)
 
     const history = useHistory()
 
@@ -49,7 +48,7 @@ function SignUp() {
         })
     }
 
-    if (needToRedirect){
+    if (!props.redirect.redirect){
         return <Redirect to="/" />
     }
 
