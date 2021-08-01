@@ -37,7 +37,6 @@ function Login(props) {
             password:userPass.password
         },config)
         .then(res =>{
-            console.log(res)
             if (res.data.status === "success"){
                 setColor("green")
                 setText("You Logged In Successfully")

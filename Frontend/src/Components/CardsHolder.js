@@ -38,14 +38,14 @@ function CardsHolder() {
               src='static/img/img-2.jpg'
               text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
               label='Mystery'
-              path='/services'
+              path='/'
             />
 
             <ImgCard
               src='static/img/img-1.jpg'
               text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
               label='Mystery'
-              path='/services'
+              path='/'
             />
           
                       
@@ -58,7 +58,7 @@ function CardsHolder() {
               src={"static"+item.img}
               text={item.description}
               label={item.Title}
-              path='/services'
+              path='/'
             />
           )}
              

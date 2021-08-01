@@ -3,6 +3,7 @@ import axios, { post } from 'axios'
 import Info from "../Info"
 
 import "./AddImg.css"
+import { Redirect } from 'react-router'
 
 const config = {
     headers:{
@@ -19,7 +20,7 @@ const config2 = {
     }
 } 
 
-function AddImg() {
+function AddImg(props) {
     const [file, setfile] = useState(null)
     const [info, setinfo] = useState({
         text : "",
@@ -30,9 +31,9 @@ function AddImg() {
         discription: ""
     })
 
-    useEffect(() => {
-        console.log(data)
-    }, [data])
+    // useEffect(() => {
+    //     console.log(data)
+    // }, [data])
 
     
 
@@ -46,7 +47,6 @@ function AddImg() {
 
         axios.post(url,formData,config)
         .then(res =>{
-            console.log(res)
             if (res.data.status === "success"){
                 setinfo({text:res.data.text,color:"green"})
             } else{
@@ -60,11 +60,11 @@ function AddImg() {
         setfile(e.target.files[0])
     }
 
-    useEffect(() => {
-        console.log(file)
-    }, [file])
+    // useEffect(() => {
+    //     console.log(file)
+    // }, [file])
 
-
+    if (props.redirect) return <Redirect to="/login" />
 
     return (
         <>
