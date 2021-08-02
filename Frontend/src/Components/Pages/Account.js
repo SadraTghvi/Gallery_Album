@@ -4,7 +4,7 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import "./Account.css"
 
-function Account(props) {
+function Account() {
     const [redirect, setredirect] = useState(false)
 
     let history = useHistory();
@@ -31,9 +31,6 @@ function Account(props) {
     //     getInfo()
     // }, [])
 
-    if (props.redirect.redirect){
-        return <Redirect to="/login" />
-    }
     
     return (
         <>

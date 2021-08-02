@@ -52,10 +52,6 @@ function Login(props) {
         return <Redirect to="/" />
     }
 
-    if (!props.redirect.redirect){
-        return <Redirect to="/" />
-    }
-
     const formHandler = (e) =>{
         e.preventDefault()
         setUserPass({

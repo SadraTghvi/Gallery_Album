@@ -64,7 +64,6 @@ function AddImg(props) {
     //     console.log(file)
     // }, [file])
 
-    if (props.redirect) return <Redirect to="/login" />
 
     return (
         <>

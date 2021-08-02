@@ -4,7 +4,7 @@ import Navbar from "../Navbar"
 import HeroSection from '../HeroSection'
 import CardsHolder from '../CardsHolder'
 
-function Home(props) {
+function Home() {
     return (
         <>
             <HeroSection />

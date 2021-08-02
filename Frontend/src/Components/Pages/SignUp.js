@@ -48,9 +48,6 @@ function SignUp(props) {
         })
     }
 
-    if (!props.redirect.redirect){
-        return <Redirect to="/" />
-    }
 
     const formHandler = (e) =>{
         e.preventDefault()
