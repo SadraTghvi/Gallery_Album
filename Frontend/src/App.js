@@ -3,6 +3,9 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import {Provider} from "react-redux"
+import store from './store';
+
 import Home from './Components/Pages/Home';
 import SignUp from './Components/Pages/SignUp';
 import Navbar from './Components/Navbar';
@@ -17,46 +20,46 @@ import "./App.css";
 
 function App() {
     // const [Loaded, setLoaded] = useState(null)
-    const [redirect, setredirect] = useState({
-        redirect: false,
-        username : ""
-    })
+    // const [redirect, setredirect] = useState({
+    //     redirect: false,
+    //     username : ""
+    // })
 
-    const getInfo = () =>{
-        axios.get("/manageAccount/")
-        .then(res =>{
-            console.log(res)
-            if(res.data.status === "failed"){
-                setredirect({
-                    redirect : true,
-                    username: res.data.username
-                })
-            } else{
-                setredirect({
-                    redirect : false,
-                    username: res.data.username
-                })
-            }
-        })
-    }
+    // const getInfo = () =>{
+    //     axios.get("/manageAccount/")
+    //     .then(res =>{
+    //         console.log(res)
+    //         if(res.data.status === "failed"){
+    //             setredirect({
+    //                 redirect : true,
+    //                 username: res.data.username
+    //             })
+    //         } else{
+    //             setredirect({
+    //                 redirect : false,
+    //                 username: res.data.username
+    //             })
+    //         }
+    //     })
+    // }
 
-    useEffect(() => {
-        getInfo()
-    }, [])
+    // useEffect(() => {
+    //     getInfo()
+    // }, [])
     
     return (
         <Router>
-            <Navbar  redirect={redirect}/>
+            <Navbar  />
             <Switch>
-                <Route path="/" exact> <Home redirect={redirect} /> </Route>
+                <Route path="/" exact> <Home   /> </Route>
 
 
 
-                <Route path="/account" exact> <Account  redirect={redirect} /> </Route>
-                <Route path="/signup"  exact> <SignUp   redirect={redirect} />  </Route>
-                <Route path="/login"   exact> <Login    redirect={redirect} />  </Route>
+                <Route path="/account" exact> <Account    /> </Route>
+                <Route path="/signup"  exact> <SignUp     />  </Route>
+                <Route path="/login"   exact> <Login      />  </Route>
                 
-                <Route path="/addimg"  exact> <AddImg   redirect={redirect} /> </Route>
+                <Route path="/addimg"  exact> <AddImg     /> </Route>
 
             </Switch>
             <Footer />
@@ -67,6 +70,8 @@ function App() {
 export default App
 
 ReactDOM.render(
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
     ,document.getElementById("root")
     )
