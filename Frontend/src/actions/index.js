@@ -1,3 +1,4 @@
+
 export const print = () =>{
     return{
         type: "print"
@@ -14,3 +15,5 @@ export const switc = () =>{
         type: "logged"
     }
 }
+
+
