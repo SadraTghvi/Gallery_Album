@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {FaTypo3,FaTimes,FaBars} from "react-icons/fa";
 import { Link } from 'react-router-dom';
+
+import { getUserInfo } from '../actions/getUser';
+
+import { useDispatch, useSelector } from 'react-redux';
+
 import './Navbar.css';
-import axios from 'axios';
 
 const csrfToken = document.currentScript.getAttribute('csrfToken') || Cookies.get('csrftoken')
 
@@ -19,28 +23,27 @@ function Navbar() {
   
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+  const [user, setUser] = useState(" ")
   
-  const [user,setUser] = useState(" ")
+  const dispatch = useDispatch()
   
-  
-  
-  const getInfo = () =>{
-    axios.get("/manageAccount/")
-    .then(res =>{
-      if(res.data.status === "true"){
-        setUser(res.data.username)
-      }else{
-        setUser("anonymous")
-      }
-    })
-  }
   
   useEffect(() => {
-    getInfo()
+    dispatch(getUserInfo())
   }, [])
   
+  const info = useSelector(state => state.getinfo)
+  
+  useEffect(() => {
+    setUser(info.username)
+  }, [info])
+
+  
+
     let link;
     let link2;
+  
     if (user !== "anonymous") {
       link = <Link
                 to='/account'
