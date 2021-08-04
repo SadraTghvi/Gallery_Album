@@ -3,7 +3,8 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import {Provider} from "react-redux"
+import {Provider, useDispatch} from "react-redux"
+import { getUserInfo } from './actions/getUser';
 import store from './store';
 
 import Home from './Components/Pages/Home';
@@ -13,6 +14,7 @@ import Footer from './Components/Footer';
 import Account from './Components/Pages/Account';
 import Login from './Components/Pages/Login';
 import AddImg from './Components/Pages/AddImg';
+import Test from './Components/Pages/Test';
 
 import "./App.css";
 
@@ -46,12 +48,20 @@ function App() {
     // useEffect(() => {
     //     getInfo()
     // }, [])
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        dispatch(getUserInfo())
+    }, [])
     
     return (
         <Router>
             <Navbar  />
             <Switch>
                 <Route path="/" exact> <Home   /> </Route>
+
+                <Route path="/test" exact> <Test   /> </Route>
 
 
 
