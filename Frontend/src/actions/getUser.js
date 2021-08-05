@@ -6,7 +6,7 @@ export const getUserInfo = () => (dispatch) =>{
     .then(res =>{
       if(res.data.status === "true"){
         dispatch({type: "loggedIn",payload:res.data.username})
-        console.log(res)
+        // console.log(res)
       }else{
         dispatch({ type:"notLoggedIn" })
       }
