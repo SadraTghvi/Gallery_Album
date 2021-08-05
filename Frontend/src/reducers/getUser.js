@@ -10,7 +10,9 @@ const getinfo = (state = initialState, { type, payload }) => {
         return { username:payload,isLoggedIn:true }
 
     case "notLoggedIn":
-        return { ...state, username:"anonymous" }
+        return { username:"anonymous",isLoggedIn:false }
+
+    
 
     default:
         return state
