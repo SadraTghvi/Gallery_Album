@@ -6,8 +6,8 @@ import Info from "../Info"
 import { useDispatch, useSelector } from 'react-redux'
 import { addPics } from '../../actions/addPics'
 
-import "./AddImg.css"
 
+import "./AddImg.css"
 
 const config = {
     headers:{
