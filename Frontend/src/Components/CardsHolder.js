@@ -2,31 +2,22 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import './CardsHolder.css';
 import ImgCard from './ImgCard';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getPics } from '../actions/getPics';
 
 function CardsHolder() {
-  const [data,setData] = useState([])
 
-  const getPics = () =>{
-    axios.get('api/albums/')
-    .then(res => {
-      setData(res.data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
+  const dispatch = useDispatch()
   
   useEffect(() => {
-    getPics();
+    dispatch(getPics())
   }, [])
-
-  // useEffect(() => {
-  //   console.log(finalData)
-  // }, [finalData])
   
-  // for (let i = 0; i < data.length; i++) {
-  //   console.log(data[i])
-  // }
+  const pics = useSelector(state => state.getPics)
+
+ 
+
 
   return (
     <div className='cards'>
@@ -52,7 +43,7 @@ function CardsHolder() {
           </ul>
           <ul className='cards__items mine' id="mine">
           
-          {data.map((item) =>
+          {pics.map((item) =>
             <ImgCard
               key={item.id}
               src={"static"+item.img}
