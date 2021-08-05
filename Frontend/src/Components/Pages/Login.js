@@ -1,11 +1,15 @@
 import axios from 'axios'
+
 import React, { useState } from 'react'
+
+import { useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router'
 
-import "./Login.css"
-
 import Cookies from 'js-cookie'
+// components
 import Info from '../Info'
+// css
+import "./Login.css"
 
 const config = {
         headers: {
@@ -24,7 +28,7 @@ function Login(props) {
     const history = useHistory()
 
    
-
+    const dispatch = useDispatch()
     
 
     var info = <> </>
@@ -41,6 +45,8 @@ function Login(props) {
                 setColor("green")
                 setText("You Logged In Successfully")
                 setredirect(true)
+
+                dispatch({type:"loggedIn", payload:userPass.username})
             }else{  
                 setColor("red")
                 setText(res.data.text)
