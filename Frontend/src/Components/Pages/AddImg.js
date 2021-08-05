@@ -1,9 +1,13 @@
 import React,{useEffect, useState} from 'react'
-import axios, { post } from 'axios'
+import { Redirect } from 'react-router'
+
 import Info from "../Info"
 
+import { useDispatch, useSelector } from 'react-redux'
+import { addPics } from '../../actions/addPics'
+
 import "./AddImg.css"
-import { Redirect } from 'react-router'
+
 
 const config = {
     headers:{
@@ -13,27 +17,47 @@ const config = {
     }
 } 
 
-const config2 = {
-    headers:{
-        'Content-Type': 'application/json',
-        'X-CSRFToken': document.currentScript.getAttribute('csrfToken'),
-    }
-} 
 
 function AddImg(props) {
+
     const [file, setfile] = useState(null)
-    const [info, setinfo] = useState({
-        text : "",
-        color : ""
-    })
+    // const [info, setinfo] = useState({
+    //     text : "",
+    //     color : ""
+    // })
     const [data, setdata] = useState({
         title: "",
         discription: ""
     })
+    
+    const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     console.log(data)
-    // }, [data])
+
+    const Picinfo = useSelector(state => state.info)
+
+    var info = <> </>
+    if(Picinfo.status !== null){
+        console.log("slm")
+        if(Picinfo.status){
+            info = <>
+                    <div className="info">
+                        <Info text={Picinfo.text} color="green" />
+                    </div> 
+                   </>
+        } else{
+            info = <>
+                    <div className="info">
+                        <Info text={Picinfo.text} color="red" />
+                    </div> 
+                   </>
+        }
+    }
+
+    
+
+    useEffect(() => {
+        console.log(Picinfo)
+    }, [Picinfo])
 
     
 
@@ -45,15 +69,20 @@ function AddImg(props) {
         formData.append("title",data.title)
         formData.append("discription",data.discription)
 
-        axios.post(url,formData,config)
-        .then(res =>{
-            if (res.data.status === "success"){
-                setinfo({text:res.data.text,color:"green"})
-            } else{
-                console.log(res.data.text)
-                setinfo({text:res.data.text,color:"red"})
-            }
-        })
+        // axios.post(url,formData,config)
+        // .then(res =>{
+        //     if (res.data.status === "success"){
+        //         setinfo({text:res.data.text,color:"green"})
+        //     } else{
+        //         console.log(res.data.text)
+        //         setinfo({text:res.data.text,color:"red"})
+        //     }
+        // })
+
+        dispatch(addPics(formData,config))
+
+
+
     }
 
     const onChange = (e) =>{
@@ -80,9 +109,7 @@ function AddImg(props) {
                     <input required  type="file" onChange={onChange} />
                     <button className="btn btn-primary" type="submit" onClick={sendForm}>Submit</button>
             </div>
-            <div className="info">
-                <Info text={info.text} color={info.color} />
-            </div>
+            {info}
         </>
     )
 }
