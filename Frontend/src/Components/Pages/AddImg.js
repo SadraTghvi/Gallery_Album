@@ -21,10 +21,7 @@ const config = {
 function AddImg(props) {
 
     const [file, setfile] = useState(null)
-    // const [info, setinfo] = useState({
-    //     text : "",
-    //     color : ""
-    // })
+
     const [data, setdata] = useState({
         title: "",
         discription: ""
@@ -69,30 +66,13 @@ function AddImg(props) {
         formData.append("title",data.title)
         formData.append("discription",data.discription)
 
-        // axios.post(url,formData,config)
-        // .then(res =>{
-        //     if (res.data.status === "success"){
-        //         setinfo({text:res.data.text,color:"green"})
-        //     } else{
-        //         console.log(res.data.text)
-        //         setinfo({text:res.data.text,color:"red"})
-        //     }
-        // })
-
         dispatch(addPics(formData,config))
-
-
 
     }
 
     const onChange = (e) =>{
         setfile(e.target.files[0])
     }
-
-    // useEffect(() => {
-    //     console.log(file)
-    // }, [file])
-
 
     return (
         <>
