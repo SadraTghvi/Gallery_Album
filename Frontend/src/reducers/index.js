@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
+
 import getinfo from "./getUser";
 
+import getPics from "./getPics";
+
 const rootReducer = combineReducers({
-    getinfo: getinfo
+    getinfo: getinfo,
+    getPics: getPics
 })
 
 export default rootReducer;
